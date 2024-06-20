@@ -10,6 +10,10 @@ fg_color = "#FFFFFF"  # 白
 window.configure(bg=bg_color)
 # ↑↑↑ お約束のコード ↑↑↑
 
+# ランダムボタンを設置
+# ボタンを押したら現在登録されている名簿の中からランダムに抽出
+# len(name_list)これを上手いごと使って！！
+
 name_list = []
 
 
@@ -22,6 +26,12 @@ def button_action1():  # 関数の定義 ※ボタンが押されたときの動
     label1.config(text=name_out)  # 画面に出力
 
 
+def button_action2():
+    num = len(name_list)
+    num = random.randint(0, num - 1)
+    label2.config(text=name_list[num])
+
+
 # def select():
 
 
@@ -29,12 +39,17 @@ def button_action1():  # 関数の定義 ※ボタンが押されたときの動
 entry1 = tk.Entry(window, bg=fg_color, fg=bg_color)
 entry1.pack(pady=10)
 
+
 # ボタンの作成
 button1 = tk.Button(window, text="追加", command=button_action1)
 button1.pack(pady=10)
+button2 = tk.Button(window, text="ランダム", command=button_action2)
+button2.pack(pady=10)
 
 
 # 出力ラベルの作成
+label2 = tk.Label(window, text="", bg=bg_color, fg=fg_color)
+label2.pack(pady=10)
 label1 = tk.Label(window, text="", bg=bg_color, fg=fg_color)
 label1.pack(pady=10)
 
